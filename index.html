@@ -652,6 +652,17 @@ section[aria-labelledby="why-h"],#safety{display:none}
   .shot-w:hover img{transform:scale(1.04)}
 }
 
+/* === 24/08 route cards: each trip carries its own hand-drawn track === */
+.trip .route{width:100%;height:auto;margin:.9rem 0 1.05rem;display:block}
+.trip .route .rt{stroke:var(--ember);stroke-width:2;stroke-dasharray:6 6;stroke-linecap:round}
+.trip .route .rt-branch{stroke:var(--muted-2);stroke-width:1.5;stroke-dasharray:3 5;opacity:.65}
+.trip .route circle{fill:var(--surface);stroke:var(--text);stroke-width:2}
+.trip .route .rt-end{fill:var(--ember);stroke:var(--ember)}
+@media (hover:hover){
+  .trip:hover .route .rt{animation:rt-march 1.1s linear infinite}
+  @keyframes rt-march{to{stroke-dashoffset:-24}}
+}
+
 </style>
 </head>
 <body>
@@ -780,6 +791,10 @@ section[aria-labelledby="why-h"],#safety{display:none}
         <p class="trip-tag">Start here</p>
         <h3>The Long Weekend</h3>
         <p class="trip-meta">3&ndash;5 days &middot; up to 4 guests</p>
+        <svg class="route" viewBox="0 0 300 44" aria-hidden="true" fill="none">
+          <path class="rt" d="M8 30 C 40 10, 72 34, 104 22 C 136 10, 168 38, 200 26 C 232 14, 262 28, 292 16"/>
+          <circle cx="8" cy="30" r="4"/><circle cx="104" cy="22" r="3"/><circle cx="200" cy="26" r="3"/><circle class="rt-end" cx="292" cy="16" r="4"/>
+        </svg>
         <p>Our recommended length for a first adventure. Beaches and rainforest, a national park or two, a night under the stars, and 4WD tracks you would never find on your own.</p>
         <ul class="chips"><li>4WD</li><li>Camping</li><li>Hiking</li><li>Swimming holes</li></ul>
         <div class="spacer"></div>
@@ -791,6 +806,10 @@ section[aria-labelledby="why-h"],#safety{display:none}
         <p class="trip-tag">The signature</p>
         <h3>The Survival Week</h3>
         <p class="trip-meta">7 days minimum &middot; up to 4 guests</p>
+        <svg class="route" viewBox="0 0 300 44" aria-hidden="true" fill="none">
+          <path class="rt" d="M8 32 C 24 22, 40 30, 56 20 C 72 10, 88 38, 104 30 C 120 22, 136 8, 152 16 C 168 24, 184 36, 200 28 C 216 20, 232 10, 248 18 C 264 26, 278 32, 292 26"/>
+          <circle cx="8" cy="32" r="4"/><circle cx="56" cy="20" r="2.5"/><circle cx="104" cy="30" r="2.5"/><circle cx="152" cy="16" r="2.5"/><circle cx="200" cy="28" r="2.5"/><circle cx="248" cy="18" r="2.5"/><circle class="rt-end" cx="292" cy="26" r="4"/>
+        </svg>
         <p>For people who consider themselves more adventurer than tourist. Learn to forage for food, travel the length of a river, climb waterfalls and trek through bushland to the top of a mountain range. Seven days is the minimum, because it takes about that long to stop being a visitor.</p>
         <ul class="chips"><li>Foraging</li><li>River travel</li><li>Navigation</li><li>Fire &amp; shelter</li><li>Climbing</li></ul>
         <div class="spacer"></div>
@@ -802,6 +821,12 @@ section[aria-labelledby="why-h"],#safety{display:none}
         <p class="trip-tag">Anything else</p>
         <h3>Build your own</h3>
         <p class="trip-meta">Any length &middot; up to 4 guests</p>
+        <svg class="route" viewBox="0 0 300 44" aria-hidden="true" fill="none">
+          <path class="rt" d="M8 30 C 38 14, 70 34, 100 22 C 124 13, 148 30, 170 26"/>
+          <path class="rt rt-branch" d="M170 26 C 210 18, 254 12, 292 10"/>
+          <path class="rt rt-branch" d="M170 26 C 210 34, 254 38, 292 38"/>
+          <circle cx="8" cy="30" r="4"/><circle cx="100" cy="22" r="3"/><circle class="rt-end" cx="170" cy="26" r="4"/><circle cx="292" cy="10" r="3"/><circle cx="292" cy="38" r="3"/>
+        </svg>
         <p>Drive tours, beach tours, hiking, 4WD, camping, diving and snorkelling, a farm stay, wine country, or a night out in Brisbane. Select one or more adventures from this page or tell us directly what you would like to do. Don't be shy.</p>
         <ul class="chips" id="build-chips"><li>Drive tours</li><li>Beaches</li><li>Diving</li><li>Farm stay</li><li>Wine tours</li><li>Night life</li></ul>
         <p class="trip-meta" id="build-hint" hidden>Tap what appeals &mdash; it starts your enquiry below.</p>
