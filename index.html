@@ -688,6 +688,13 @@ section[aria-labelledby="why-h"],#safety{display:none}
 .foot-wordmark{margin:.4rem 0 1.7rem}
 .foot-grid{margin-bottom:1.4rem}
 
+/* === 24/08 lightbox gallery nav === */
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;appearance:none;-webkit-appearance:none;background:rgba(22,34,30,.6);border:1.5px solid rgba(231,225,206,.4);color:#F5F0DF;font:700 1.7rem/1 var(--sans);width:46px;height:46px;border-radius:50%;cursor:pointer;display:grid;place-items:center;padding:0 0 4px}
+.lb-prev{left:14px}
+.lb-next{right:14px}
+.lb-nav:hover{background:var(--ember);border-color:var(--ember)}
+@media (max-width:560px){.lb-nav{width:40px;height:40px;font-size:1.4rem}.lb-prev{left:8px}.lb-next{right:8px}}
+
 </style>
 </head>
 <body>
@@ -1341,11 +1348,11 @@ var I18N=[
 {s:'.foot-grid>div:nth-child(3) ul',h:'<li><a href="#safety">安全与保险</a></li><li><a href="#crew">我们的团队</a></li><li><a href="#enquire">联系咨询</a></li>',t:'<li><a href="#safety">安全與保險</a></li><li><a href="#crew">我們的團隊</a></li><li><a href="#enquire">聯絡查詢</a></li>'},
 {s:'.foot-grid>div:nth-child(4)>h4',h:'找到我们',t:'找到我們'},
 {s:'.foot-legal p:nth-child(1)',
- h:'<b style="color:var(--muted)">本页是一个概念原型。</b>2026年8月13日为重启的 Still Wild 概念而建（8月23日修订），使用 stillwild.com.au 的文案与照片，经站主许可（2026年6月23日）。未发布，未接入任何预订或邮件系统，制作过程未改动线上网站的任何部分。',
- t:'<b style="color:var(--muted)">本頁是一個概念原型。</b>2026年8月13日為重啟的 Still Wild 概念而建（8月23日修訂），使用 stillwild.com.au 的文案與照片，經站主許可（2026年6月23日）。未發布，未接入任何預訂或郵件系統，製作過程未改動線上網站的任何部分。',},
+ h:'<b style="color:var(--muted)">本页是一个概念页。</b>2026年8月13日为重启的 Still Wild 概念而建（8月23日修订），使用 stillwild.com.au 的文案与照片，经站主许可（2026年6月23日）。现以不公开链接托管仅供预览——不被搜索引擎收录，未接入任何预订或邮件系统，制作过程未改动线上网站的任何部分。',
+ t:'<b style="color:var(--muted)">本頁是一個概念頁。</b>2026年8月13日為重啟的 Still Wild 概念而建（8月23日修訂），使用 stillwild.com.au 的文案與照片，經站主許可（2026年6月23日）。現以不公開連結託管僅供預覽——不被搜尋引擎收錄，未接入任何預訂或郵件系統，製作過程未改動線上網站的任何部分。',},
 {s:'.foot-legal p:nth-child(2)',
- h:'照片与原始文案取自 Paul Bellamy 本人的网站 stillwild.com.au，仅为此私人概念页复用。各张照片的版权归属尚未确认——在任何发布之前，须先与 Paul 确认。本页显示的价格、回复时间与行程名称均为虚构占位，不构成任何承诺。',
- t:'照片與原始文案取自 Paul Bellamy 本人的網站 stillwild.com.au，僅為此私人概念頁複用。各張照片的版權歸屬尚未確認——在任何發布之前，須先與 Paul 確認。本頁顯示的價格、回覆時間與行程名稱均為虛構佔位，不構成任何承諾。'}
+ h:'照片与原始文案取自 stillwild.com.au，仅为此概念页复用。各张照片的版权归属尚未逐一确认——正式上线之前须先确认清楚。行程名称及部分细节为概念占位，不构成任何承诺。',
+ t:'照片與原始文案取自 stillwild.com.au，僅為此概念頁複用。各張照片的版權歸屬尚未逐一確認——正式上線之前須先確認清楚。行程名稱及部分細節為概念佔位，不構成任何承諾。'}
 ];
 
 /* v3: the WeChat QR tile speaks all five languages too */
@@ -1537,11 +1544,11 @@ var JAKO=[
 {s:'.foot-grid>div:nth-child(3) ul',j:'<li><a href="#safety">安全と保険</a></li><li><a href="#crew">クルー</a></li><li><a href="#enquire">お問い合わせ</a></li>',k:'<li><a href="#safety">안전과 보험</a></li><li><a href="#crew">크루</a></li><li><a href="#enquire">문의</a></li>'},
 {s:'.foot-grid>div:nth-child(4)>h4',j:'連絡先',k:'연락처'},
 {s:'.foot-legal p:nth-child(1)',
- j:'<b style="color:var(--muted)">このページはコンセプト試作です。</b>2026年8月13日、再始動する Still Wild のコンセプトとして制作（8月23日改訂）。stillwild.com.au の文章と写真を、サイト所有者の許可（2026年6月23日）を得て使用。未公開で、予約・メールのどのシステムにも接続されておらず、制作にあたり公開中のサイトには一切手を加えていません。',
- k:'<b style="color:var(--muted)">이 페이지는 콘셉트 프로토타입입니다.</b> 2026년 8월 13일, 재시동하는 Still Wild의 콘셉트로 제작(8월 23일 수정). stillwild.com.au의 글과 사진을 사이트 소유자의 허가(2026년 6월 23일)를 받아 사용했습니다. 게시되지 않았고 예약·메일 시스템에 연결되어 있지 않으며, 제작 과정에서 운영 중인 사이트는 전혀 건드리지 않았습니다.'},
+ j:'<b style="color:var(--muted)">このページはコンセプトです。</b>2026年8月13日、再始動する Still Wild のコンセプトとして制作（8月23日改訂）。stillwild.com.au の文章と写真を、サイト所有者の許可（2026年6月23日）を得て使用。現在は非公開リンクとしてレビュー用にのみホストされており、検索エンジンには登録されず、予約・メールのどのシステムにも接続されていません。制作にあたり公開中のサイトには一切手を加えていません。',
+ k:'<b style="color:var(--muted)">이 페이지는 콘셉트입니다.</b> 2026년 8월 13일, 재시동하는 Still Wild의 콘셉트로 제작(8월 23일 수정). stillwild.com.au의 글과 사진을 사이트 소유자의 허가(2026년 6월 23일)를 받아 사용했습니다. 현재 비공개 링크로 리뷰용으로만 호스팅되며, 검색엔진에 등록되지 않고 예약·메일 시스템과 연결되어 있지 않습니다. 제작 과정에서 운영 중인 사이트는 전혀 건드리지 않았습니다.'},
 {s:'.foot-legal p:nth-child(2)',
- j:'写真と元の文章は Paul Bellamy 本人のサイト stillwild.com.au からのもので、この私的なコンセプトのためだけに複製しています。各写真の権利の所在は未確認——公開の前に必ず Paul に確認が必要です。表示中の価格・返信時間・トリップ名は創作された仮のもので、いかなる約束も構成しません。',
- k:'사진과 원본 문구는 Paul Bellamy 본인의 사이트 stillwild.com.au에서 가져와 이 사적인 콘셉트만을 위해 복제했습니다. 각 사진의 권리 관계는 미확인 — 공개 전에 반드시 Paul에게 확인해야 합니다. 표시된 가격·답변 시간·코스 이름은 창작된 임시 값이며 어떤 약속도 아닙니다.'},
+ j:'写真と元の文章は stillwild.com.au からのもので、このコンセプトページのためだけに複製しています。各写真の権利の所在は未確認——正式公開の前に必ず確認が必要です。トリップ名や一部の詳細はコンセプト上の仮のもので、いかなる約束も構成しません。',
+ k:'사진과 원본 문구는 stillwild.com.au에서 가져와 이 콘셉트 페이지만을 위해 복제했습니다. 각 사진의 권리 관계는 미확인 — 정식 공개 전에 반드시 확인해야 합니다. 트립 이름과 일부 세부 사항은 콘셉트용 자리표시자이며 어떤 약속도 아닙니다.'},
 {s:'.contact-card dl>div:nth-child(7) dt',j:'このコンセプトの制作者',k:'콘셉트 제작자'},
 {s:'.contact-card dl>div:nth-child(7) dd',
  j:'Jared——WeChat <b>jaredlilliss</b> · <a href="mailto:jaredlils99@gmail.com">jaredlils99@gmail.com</a>',
@@ -1627,23 +1634,39 @@ if(!SKIP_RV && 'IntersectionObserver' in window){
   secs.forEach(function(s){ nio.observe(s); });
 }
 
-/* ---------- 4. Lightbox on the destination tiles ----------------------- */
+/* ---------- 4. Lightbox gallery: mosaic + wall, prev/next/keys/swipe ---- */
 if(window.HTMLDialogElement){
   var dlg=d.createElement('dialog'); dlg.className='lightbox';
-  dlg.innerHTML='<figure><img alt=""><figcaption><div><h3></h3><p></p></div><button type="button" class="lb-close" aria-label="Close">✕</button></figcaption></figure>';
+  dlg.innerHTML='<figure><img alt=""><figcaption><div><h3></h3><p></p></div><button type="button" class="lb-close" aria-label="Close">✕</button></figcaption></figure><button type="button" class="lb-nav lb-prev" aria-label="Previous photo">‹</button><button type="button" class="lb-nav lb-next" aria-label="Next photo">›</button>';
   d.body.appendChild(dlg);
+  var lbItems=qa('.mosaic .tile, .wall .shot-w'), lbCur=0;
+  var lbShow=function(i){
+    lbCur=(i+lbItems.length)%lbItems.length;
+    var t=lbItems[lbCur];
+    var img=t.querySelector('img'), h=t.querySelector('h3'), p=t.querySelector('figcaption p');
+    dlg.querySelector('img').src=img.src;
+    dlg.querySelector('img').alt=img.alt;
+    dlg.querySelector('h3').textContent=h?h.textContent:'';
+    dlg.querySelector('figcaption p').textContent=p?p.textContent:'';
+  };
   dlg.addEventListener('click',function(ev){ if(ev.target===dlg) dlg.close(); });
   dlg.querySelector('.lb-close').addEventListener('click',function(){ dlg.close(); });
-  qa('.mosaic .tile, .wall .shot-w').forEach(function(t){
+  dlg.querySelector('.lb-prev').addEventListener('click',function(){ lbShow(lbCur-1); });
+  dlg.querySelector('.lb-next').addEventListener('click',function(){ lbShow(lbCur+1); });
+  dlg.addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowLeft'){ ev.preventDefault(); lbShow(lbCur-1); }
+    else if(ev.key==='ArrowRight'){ ev.preventDefault(); lbShow(lbCur+1); }
+  });
+  var lbSwX=null;
+  dlg.addEventListener('pointerdown',function(ev){ lbSwX=ev.clientX; },{passive:true});
+  dlg.addEventListener('pointerup',function(ev){
+    if(lbSwX===null) return;
+    var dx=ev.clientX-lbSwX; lbSwX=null;
+    if(Math.abs(dx)>45) lbShow(lbCur+(dx<0?1:-1));
+  },{passive:true});
+  lbItems.forEach(function(t,i){
     t.setAttribute('tabindex','0'); t.setAttribute('role','button');
-    var open=function(){
-      var img=t.querySelector('img'), h=t.querySelector('h3'), p=t.querySelector('figcaption p');
-      dlg.querySelector('img').src=img.src;
-      dlg.querySelector('img').alt=img.alt;
-      dlg.querySelector('h3').textContent=h?h.textContent:'';
-      dlg.querySelector('figcaption p').textContent=p?p.textContent:'';
-      dlg.showModal();
-    };
+    var open=function(){ lbShow(i); dlg.showModal(); };
     t.addEventListener('click',open);
     t.addEventListener('keydown',function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); open(); } });
   });
