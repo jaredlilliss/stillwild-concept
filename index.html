@@ -663,6 +663,31 @@ section[aria-labelledby="why-h"],#safety{display:none}
   @keyframes rt-march{to{stroke-dashoffset:-24}}
 }
 
+/* === 24/08 compaction pass (Jared: "compact the website more seamlessly") ===
+   Tighter vertical rhythm everywhere; the pre-launch numbers row is gone from
+   the template. Values ~25-35% tighter than the defaults they override. */
+.band{padding-block:clamp(2rem,4.8vh,3.2rem)}
+.band-head{margin-bottom:1.7rem}
+.band .band-head::before{font-size:clamp(5.5rem,11vw,10rem)}
+.hero .wrap{padding-block:clamp(2.4rem,6.5vh,4.4rem) clamp(2rem,4.5vh,3rem)}
+@media (max-width:700px){.hero{min-height:62svh}}
+.wx-band{padding-block:clamp(1.7rem,4.2vh,2.5rem)}
+.wx-head{margin-bottom:1.1rem}
+.trust li{padding-block:.75rem}
+.mosaic{gap:1.05rem}
+.place-note{margin-top:1.1rem}
+.more-places{margin-top:1.1rem}
+.wall{margin-top:2.3rem}
+.wall-head{margin-bottom:1.05rem}
+.crew-merged{margin-top:2.3rem;padding:clamp(1.4rem,3vw,2.2rem)}
+.crew-merged .band-head{margin-bottom:1.4rem}
+.trip .route{margin:.65rem 0 .8rem}
+.site-foot{padding-block:2.7rem 1.8rem}
+.foot-head{margin-bottom:1.5rem}
+.foot-enquire{margin-bottom:2.3rem}
+.foot-wordmark{margin:.4rem 0 1.7rem}
+.foot-grid{margin-bottom:1.4rem}
+
 </style>
 </head>
 <body>
@@ -735,8 +760,8 @@ section[aria-labelledby="why-h"],#safety{display:none}
 <!-- ============================ TICKER ================================== -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>4WD <b>·</b> HIKING <b>·</b> CAMPING <b>·</b> DIVING <b>·</b> SNORKELLING <b>·</b> SURVIVAL <b>·</b> FORAGING <b>·</b> CLIMBING <b>·</b> FARM STAYS <b>·</b> WINE COUNTRY <b>·</b> K'GARI <b>·</b> ULURU <b>·</b> THE REEF <b>·</b> BLUE MOUNTAINS <b>·</b>&nbsp;</span>
-    <span>4WD <b>·</b> HIKING <b>·</b> CAMPING <b>·</b> DIVING <b>·</b> SNORKELLING <b>·</b> SURVIVAL <b>·</b> FORAGING <b>·</b> CLIMBING <b>·</b> FARM STAYS <b>·</b> WINE COUNTRY <b>·</b> K'GARI <b>·</b> ULURU <b>·</b> THE REEF <b>·</b> BLUE MOUNTAINS <b>·</b>&nbsp;</span>
+    <span>4WD <b>·</b> HIKING <b>·</b> CAMPING <b>·</b> DIVING <b>·</b> SNORKELLING <b>·</b> BOATING <b>·</b> SURVIVAL <b>·</b> FORAGING <b>·</b> CLIMBING <b>·</b> FARM STAYS <b>·</b> WINE COUNTRY <b>·</b> K'GARI <b>·</b> ULURU <b>·</b> THE REEF <b>·</b> BLUE MOUNTAINS <b>·</b> SYDNEY <b>·</b> PERTH <b>·</b>&nbsp;</span>
+    <span>4WD <b>·</b> HIKING <b>·</b> CAMPING <b>·</b> DIVING <b>·</b> SNORKELLING <b>·</b> BOATING <b>·</b> SURVIVAL <b>·</b> FORAGING <b>·</b> CLIMBING <b>·</b> FARM STAYS <b>·</b> WINE COUNTRY <b>·</b> K'GARI <b>·</b> ULURU <b>·</b> THE REEF <b>·</b> BLUE MOUNTAINS <b>·</b> SYDNEY <b>·</b> PERTH <b>·</b>&nbsp;</span>
   </div>
 </div>
 
@@ -828,7 +853,7 @@ section[aria-labelledby="why-h"],#safety{display:none}
           <circle cx="8" cy="30" r="4"/><circle cx="100" cy="22" r="3"/><circle class="rt-end" cx="170" cy="26" r="4"/><circle cx="292" cy="10" r="3"/><circle cx="292" cy="38" r="3"/>
         </svg>
         <p>Drive tours, beach tours, hiking, 4WD, camping, diving and snorkelling, a farm stay, wine country, or a night out in Brisbane. Select one or more adventures from this page or tell us directly what you would like to do. Don't be shy.</p>
-        <ul class="chips" id="build-chips"><li>Drive tours</li><li>Beaches</li><li>Diving</li><li>Farm stay</li><li>Wine tours</li><li>Night life</li></ul>
+        <ul class="chips" id="build-chips"><li>Drive tours</li><li>Beaches</li><li>Diving</li><li>Boating</li><li>Farm stay</li><li>Wine tours</li><li>Night life</li></ul>
         <p class="trip-meta" id="build-hint" hidden>Tap what appeals &mdash; it starts your enquiry below.</p>
         <div class="spacer"></div>
         <p class="price">quoted per trip <small>after we talk</small></p>
@@ -846,13 +871,6 @@ section[aria-labelledby="why-h"],#safety{display:none}
       <p class="eyebrow">Where we go</p>
       <h2 id="places-h">Beaches, islands, rainforests, the outback, national parks, wild rivers and streams</h2>
       <p class="lede">In Queensland alone there are more than 300 national parks. These are a few of the places we keep going back to. Every photograph on this page comes from Still Wild's own galleries at stillwild.com.au, reused with Paul's permission for this concept &mdash; image rights get settled item-by-item before anything goes live.</p>
-    </div>
-
-    <div class="numbers" aria-label="A few real numbers">
-      <div class="num"><b data-count="300">300</b><span class="num-cap">+ national parks in Queensland alone</span></div>
-      <div class="num"><b data-count="2000">2,000</b><span class="num-cap">+ km of Great Barrier Reef</span></div>
-      <div class="num"><b data-count="25">25</b><span class="num-cap">+ years organising adventures</span></div>
-      <div class="num"><b data-count="7">7</b><span class="num-cap">days minimum for survival</span></div>
     </div>
 
     <div class="mosaic">
@@ -904,7 +922,7 @@ section[aria-labelledby="why-h"],#safety{display:none}
       <ul class="chips">
         <li>Uluru</li><li>K'gari</li><li>Blue Mountains</li><li>Cabarita Beach</li><li>Bundaberg coast</li>
         <li>Maleny farm country</li><li>Flynn Reef</li><li>Kangaroo Point, Brisbane</li>
-        <li>Story Bridge &amp; Riverfire</li><li>Bondi Beach</li><li>Sunshine Coast</li><li>Gold Coast</li>
+        <li>Story Bridge &amp; Riverfire</li><li>Sydney</li><li>Bondi Beach</li><li>Sunshine Coast</li><li>Gold Coast</li><li>Perth</li>
       </ul>
     </div>
 
@@ -1213,7 +1231,7 @@ var I18N=[
 {s:'.trips .trip:nth-child(3) h3',h:'自由定制',t:'自由訂製'},
 {s:'.trips .trip:nth-child(3) .trip-meta',h:'天数不限 · 最多4人',t:'天數不限 · 最多4人'},
 {s:'.trips .trip:nth-child(3)>p:not([class])',h:'自驾游、海滩、徒步、四驱越野、露营、潜水浮潜、农场体验、酒庄之旅，或是布里斯班的夜生活。在本页的冒险里选一个或几个，又或者直接告诉我们你想做什么。不要害羞。',t:'自駕遊、海灘、遠足、四驅越野、露營、潛水浮潛、農場體驗、酒莊之旅，或是布里斯班的夜生活。在本頁的冒險裡選一個或幾個，又或者直接告訴我們你想做什麼。不要害羞。'},
-{s:'#build-chips',h:'<li>自驾游</li><li>海滩</li><li>潜水</li><li>农场体验</li><li>酒庄之旅</li><li>夜生活</li>',t:'<li>自駕遊</li><li>海灘</li><li>潛水</li><li>農場體驗</li><li>酒莊之旅</li><li>夜生活</li>'},
+{s:'#build-chips',h:'<li>自驾游</li><li>海滩</li><li>潜水</li><li>乘船出海</li><li>农场体验</li><li>酒庄之旅</li><li>夜生活</li>',t:'<li>自駕遊</li><li>海灘</li><li>潛水</li><li>乘船出海</li><li>農場體驗</li><li>酒莊之旅</li><li>夜生活</li>'},
 {s:'#build-hint',h:'点选感兴趣的——会帮你起草下面的咨询。',t:'點選感興趣的——會幫你起草下面的查詢。'},
 {s:'.trips .trip:nth-child(3) .price',h:'按行程报价 <small>沟通后确定</small>',t:'按行程報價 <small>溝通後確定</small>'},
 {s:'#build-btn',h:'描述你的冒险',t:'描述你的冒險'},
@@ -1234,8 +1252,8 @@ var I18N=[
 {s:'.place-note',h:'我们使用这些地方今天的名字：K\'gari 旧称 Fraser Island，Uluru 旧称 Ayers Rock。',t:'我們使用這些地方今天的名字：K\'gari 舊稱 Fraser Island，Uluru 舊稱 Ayers Rock。'},
 {s:'.more-places h3',h:'也在地图上',t:'也在地圖上'},
 {s:'.more-places .chips',
- h:'<li>乌鲁鲁</li><li>K\'gari</li><li>蓝山</li><li>卡巴丽塔海滩</li><li>班达伯格海岸</li><li>马莱尼农场乡野</li><li>弗林礁</li><li>袋鼠角（布里斯班）</li><li>故事桥与河火节</li><li>邦迪海滩</li><li>阳光海岸</li><li>黄金海岸</li>',
- t:'<li>烏魯魯</li><li>K\'gari</li><li>藍山</li><li>卡巴麗塔海灘</li><li>班達伯格海岸</li><li>馬萊尼農場鄉野</li><li>弗林礁</li><li>袋鼠角（布里斯班）</li><li>故事橋與河火節</li><li>邦迪海灘</li><li>陽光海岸</li><li>黃金海岸</li>'},
+ h:'<li>乌鲁鲁</li><li>K\'gari</li><li>蓝山</li><li>卡巴丽塔海滩</li><li>班达伯格海岸</li><li>马莱尼农场乡野</li><li>弗林礁</li><li>袋鼠角（布里斯班）</li><li>故事桥与河火节</li><li>悉尼</li><li>邦迪海滩</li><li>阳光海岸</li><li>黄金海岸</li><li>珀斯</li>',
+ t:'<li>烏魯魯</li><li>K\'gari</li><li>藍山</li><li>卡巴麗塔海灘</li><li>班達伯格海岸</li><li>馬萊尼農場鄉野</li><li>弗林礁</li><li>袋鼠角（布里斯班）</li><li>故事橋與河火節</li><li>悉尼</li><li>邦迪海灘</li><li>陽光海岸</li><li>黃金海岸</li><li>珀斯</li>'},
 /* included */
 {s:'#included .eyebrow',h:'费用',t:'費用'},
 {s:'#inc-h',h:'一个价格，里面有什么一目了然',t:'一個價格，裡面有什麼一目了然'},
@@ -1350,11 +1368,7 @@ I18N=I18N.concat([
  t:'<b>頁面製作者 · Jared</b><span class="wx-id">jaredlilliss</span><small>概念頁聯絡人<span class="ph">佔位</span> · <a href="mailto:jaredlils99@gmail.com">jaredlils99@gmail.com</a></small>'},
 {s:'.wall-head .eyebrow',h:'在野外的一天',t:'在野外的一天'},
 {s:'#wall-h',h:'相机里的原片',t:'相機裡的原片'},
-{s:'.wall-lede',h:'从清晨的溪流到夜晚的篝火——这些照片直接来自 stillwild.com.au 的相册。',t:'從清晨的溪流到夜晚的營火——這些照片直接來自 stillwild.com.au 的相簿。'},
-{s:'.numbers .num:nth-child(1) .num-cap',h:'+ 座国家公园，仅昆士兰一州',t:'+ 座國家公園，僅昆士蘭一州'},
-{s:'.numbers .num:nth-child(2) .num-cap',h:'+ 公里大堡礁',t:'+ 公里大堡礁'},
-{s:'.numbers .num:nth-child(3) .num-cap',h:'+ 年组织探险的经验',t:'+ 年組織探險的經驗'},
-{s:'.numbers .num:nth-child(4) .num-cap',h:'天起——生存探险最低天数',t:'天起——生存探險最低天數'}
+{s:'.wall-lede',h:'从清晨的溪流到夜晚的篝火——这些照片直接来自 stillwild.com.au 的相册。',t:'從清晨的溪流到夜晚的營火——這些照片直接來自 stillwild.com.au 的相簿。'}
 ]);
 
 /* ---------------------------------------------------------------------------
@@ -1418,7 +1432,7 @@ var JAKO=[
 {s:'.trips .trip:nth-child(3) h3',j:'自由に組む',k:'자유 설계'},
 {s:'.trips .trip:nth-child(3) .trip-meta',j:'日数自由 · 最大4名',k:'기간 자유 · 최대 4명'},
 {s:'.trips .trip:nth-child(3)>p:not([class])',j:'ドライブツアー、ビーチ、ハイキング、4WD、キャンプ、ダイビングやシュノーケリング、ファームステイ、ワイナリー、ブリスベンのナイトライフまで。このページから選んでも、直接リクエストでも。遠慮はいりません。',k:'드라이브 투어, 해변, 하이킹, 4WD, 캠핑, 다이빙과 스노클링, 팜스테이, 와이너리, 브리즈번의 나이트라이프까지. 이 페이지에서 골라도 좋고, 직접 말해도 좋습니다. 부끄러워하지 마세요.'},
-{s:'#build-chips',j:'<li>ドライブツアー</li><li>ビーチ</li><li>ダイビング</li><li>ファームステイ</li><li>ワイナリー</li><li>ナイトライフ</li>',k:'<li>드라이브 투어</li><li>해변</li><li>다이빙</li><li>팜스테이</li><li>와이너리</li><li>나이트라이프</li>'},
+{s:'#build-chips',j:'<li>ドライブツアー</li><li>ビーチ</li><li>ダイビング</li><li>ボート</li><li>ファームステイ</li><li>ワイナリー</li><li>ナイトライフ</li>',k:'<li>드라이브 투어</li><li>해변</li><li>다이빙</li><li>보트</li><li>팜스테이</li><li>와이너리</li><li>나이트라이프</li>'},
 {s:'#build-hint',j:'気になるものをタップ——下の問い合わせの下書きになります。',k:'끌리는 것을 탭하세요 — 아래 문의 초안이 됩니다.'},
 {s:'.trips .trip:nth-child(3) .price',j:'トリップごとに見積り <small>相談のあとで</small>',k:'코스별 견적 <small>상담 후 확정</small>'},
 {s:'#build-btn',j:'あなたの冒険を教えてください',k:'당신의 모험을 들려주세요'},
@@ -1438,8 +1452,8 @@ var JAKO=[
 {s:'.place-note',j:'地名は現在の呼び方を使っています：K\'gari は旧称 Fraser Island、Uluru は旧称 Ayers Rock。',k:'지명은 오늘날의 이름을 씁니다: K\'gari는 옛 이름이 Fraser Island, Uluru는 Ayers Rock입니다.'},
 {s:'.more-places h3',j:'ほかにも',k:'지도 위의 다른 곳들'},
 {s:'.more-places .chips',
- j:'<li>ウルル</li><li>K\'gari</li><li>ブルーマウンテンズ</li><li>カバリタ・ビーチ</li><li>バンダバーグ沿岸</li><li>マレニーの農場地帯</li><li>フリン・リーフ</li><li>カンガルーポイント（ブリスベン）</li><li>ストーリーブリッジとリバーファイア</li><li>ボンダイ・ビーチ</li><li>サンシャインコースト</li><li>ゴールドコースト</li>',
- k:'<li>울루루</li><li>K\'gari</li><li>블루마운틴</li><li>카바리타 비치</li><li>번더버그 해안</li><li>말레니 농장 지대</li><li>플린 리프</li><li>캥거루 포인트(브리즈번)</li><li>스토리 브리지 & 리버파이어</li><li>본다이 비치</li><li>선샤인코스트</li><li>골드코스트</li>'},
+ j:'<li>ウルル</li><li>K\'gari</li><li>ブルーマウンテンズ</li><li>カバリタ・ビーチ</li><li>バンダバーグ沿岸</li><li>マレニーの農場地帯</li><li>フリン・リーフ</li><li>カンガルーポイント（ブリスベン）</li><li>ストーリーブリッジとリバーファイア</li><li>シドニー</li><li>ボンダイ・ビーチ</li><li>サンシャインコースト</li><li>ゴールドコースト</li><li>パース</li>',
+ k:'<li>울루루</li><li>K\'gari</li><li>블루마운틴</li><li>카바리타 비치</li><li>번더버그 해안</li><li>말레니 농장 지대</li><li>플린 리프</li><li>캥거루 포인트(브리즈번)</li><li>스토리 브리지 & 리버파이어</li><li>시드니</li><li>본다이 비치</li><li>선샤인코스트</li><li>골드코스트</li><li>퍼스</li>'},
 {s:'#included .eyebrow',j:'料金',k:'비용'},
 {s:'#inc-h',j:'ワンプライス。中身はこのとおり',k:'하나의 요금, 안에 뭐가 있는지 한눈에'},
 {s:'#included .band-head .lede',j:'価格は、見たいもの・やりたいこと・ルートによって変わります。変わらないのは、このリストです。',k:'가격은 보고 싶은 것, 하고 싶은 것, 루트에 따라 달라집니다. 달라지지 않는 것은 이 목록입니다.'},
@@ -1542,11 +1556,7 @@ var JAKO=[
  k:'<b>페이지 제작자 · Jared</b><span class="wx-id">jaredlilliss</span><small>콘셉트 연락처<span class="ph">임시</span> · <a href="mailto:jaredlils99@gmail.com">jaredlils99@gmail.com</a></small>'},
 {s:'.wall-head .eyebrow',j:'荒野での一日',k:'야생에서의 하루'},
 {s:'#wall-h',j:'カメラそのままの写真',k:'카메라에서 바로 꺼낸 사진'},
-{s:'.wall-lede',j:'朝の小川からキャンプファイヤーまで——stillwild.com.au のギャラリーからそのまま。',k:'아침 개울부터 모닥불까지 — stillwild.com.au 갤러리에서 그대로 가져온 사진들.'},
-{s:'.numbers .num:nth-child(1) .num-cap',j:'+ の国立公園（クイーンズランド州だけで）',k:'+ 개 국립공원 (퀸즐랜드에만)'},
-{s:'.numbers .num:nth-child(2) .num-cap',j:'+ kmのグレートバリアリーフ',k:'+ km의 그레이트배리어리프'},
-{s:'.numbers .num:nth-child(3) .num-cap',j:'+ 年の探検運営経験',k:'+ 년의 어드벤처 운영 경험'},
-{s:'.numbers .num:nth-child(4) .num-cap',j:'日以上——サバイバルの最低日数',k:'일 이상 — 서바이벌 최소 기간'}
+{s:'.wall-lede',j:'朝の小川からキャンプファイヤーまで——stillwild.com.au のギャラリーからそのまま。',k:'아침 개울부터 모닥불까지 — stillwild.com.au 갤러리에서 그대로 가져온 사진들.'}
 ];
 var JAKO_MAP={};
 JAKO.forEach(function(e){ JAKO_MAP[e.s]=e; });
@@ -1687,27 +1697,6 @@ if(send){
 
 /* ---------- 7. FAQ opens one at a time --------------------------------- */
 qa('.faq details').forEach(function(el){ el.setAttribute('name','sw-faq'); });
-
-/* ---------- 7b. Real-number count-ups (sourced figures only) ----------- */
-var nums=qa('.numbers b[data-count]');
-if(nums.length && !SKIP_RV && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-  var nfmt=function(n){ return n>=1000 ? n.toLocaleString('en-AU') : String(n); };
-  var cio=new IntersectionObserver(function(es){
-    es.forEach(function(en){
-      if(!en.isIntersecting) return;
-      cio.unobserve(en.target);
-      var el=en.target, target=parseInt(el.getAttribute('data-count'),10), t0=null;
-      var step=function(now){
-        if(t0===null) t0=now;
-        var p=Math.min((now-t0)/1100,1);
-        el.textContent=nfmt(Math.round(target*(1-Math.pow(1-p,3))));
-        if(p<1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
-  },{threshold:.6});
-  nums.forEach(function(el){ cio.observe(el); });
-}
 
 /* ---------- 7c. Magnetic primary CTAs (fine pointers only) ------------- */
 try{
