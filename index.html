@@ -1786,7 +1786,14 @@ if(hero){
     rd=function(t){
       if(W!==hero.clientWidth||H!==hero.clientHeight)resize();
       ctx.clearRect(0,0,W,H);
-      var sx=W*.74,sy=H*.45;
+      /* day-arc coupling: the sun climbs and the ridges drift apart as the
+         hero scrolls away (reduced-motion draws the t=0 frame, no coupling) */
+      var scPr=0;
+      if(!reduce){
+        var scT=document.documentElement.scrollTop||document.body.scrollTop||0;
+        scPr=Math.min(scT/Math.max(H,1),1);
+      }
+      var sx=W*.74,sy=H*(.45-scPr*.2);
       var g=ctx.createRadialGradient(sx,sy,0,sx,sy,Math.max(H*.4,120));
       g.addColorStop(0,'rgba(238,150,75,.5)');g.addColorStop(.4,'rgba(238,150,75,.16)');g.addColorStop(1,'rgba(238,150,75,0)');
       ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
@@ -1807,9 +1814,10 @@ if(hero){
       }
       for(var l=0;l<LAYERS.length;l++){
         var L=LAYERS[l];
-        ctx.beginPath();ctx.moveTo(0,H);
-        for(var x=0;x<=W;x+=7)ctx.lineTo(x,ridgeY(L,x,t));
-        ctx.lineTo(W,H);ctx.closePath();
+        var par=scPr*H*.055*L.drift;
+        ctx.beginPath();ctx.moveTo(0,H+par);
+        for(var x=0;x<=W;x+=7)ctx.lineTo(x,ridgeY(L,x,t)+par);
+        ctx.lineTo(W,H+par);ctx.closePath();
         ctx.fillStyle=L.color;ctx.fill();
       }
     };
