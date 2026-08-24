@@ -1741,8 +1741,15 @@ if(hero){
         +Math.sin((x/L.len)*6.283+L.off+t*L.drift*.05)*L.amp
         +Math.sin((x/(L.len*.37))*6.283-L.off*2+t*L.drift*.032)*L.amp*.32;
     };
+    /* HARDENED 24/08 (routed from Inbox via central): reallocate the bitmap on
+       width change, or on a height change that has SETTLED — an iOS URL bar
+       collapsing changes clientHeight every frame, and re-allocating per frame
+       burns battery and re-scales the scene mid-gesture. The canvas is CSS-
+       stretched in the meantime, invisible on a soft gradient scene. */
+    var lastRs=0;
     rd=function(t){
-      if(W!==hero.clientWidth||H!==hero.clientHeight)resize();
+      var nw=hero.clientWidth,nh=hero.clientHeight,ms=(t||0)*1000;
+      if(nw!==W||(nh!==H&&ms-lastRs>250)){resize();lastRs=ms;}
       ctx.clearRect(0,0,W,H);
       /* day-arc coupling: the sun climbs and the ridges drift apart as the
          hero scrolls away (reduced-motion draws the t=0 frame, no coupling) */
@@ -1779,6 +1786,7 @@ if(hero){
         ctx.fillStyle=L.color;ctx.fill();
       }
     };
+    rd.resize=resize;
     resize();
     addEventListener('resize',function(){resize();if(reduce&&rd)rd(0);});
   }
@@ -1803,8 +1811,10 @@ if(foot){
       cs.width=Ws*dpr;cs.height=Hs*dpr;
       ctxS.setTransform(dpr,0,0,dpr,0,0);
     };
+    var lastRsS=0;
     es=function(t){
-      if(Ws!==foot.clientWidth||Hs!==foot.clientHeight)resizeS();
+      var nws=foot.clientWidth,nhs=foot.clientHeight,mss=(t||0)*1000;
+      if(nws!==Ws||(nhs!==Hs&&mss-lastRsS>250)){resizeS();lastRsS=mss;}
       ctxS.clearRect(0,0,Ws,Hs);
       for(var i=0;i<SP.length;i++){
         var sp=SP[i];
@@ -1816,6 +1826,7 @@ if(foot){
       }
       ctxS.globalAlpha=1;
     };
+    es.resize=resizeS;
     resizeS();
     addEventListener('resize',function(){resizeS();if(reduce&&es)es(0);});
   }
@@ -1857,6 +1868,17 @@ try{
 }catch(e){}
 
 /* ---------- one shared clock ---------- */
+if(reduce && window.ResizeObserver){
+  /* HARDENED 24/08: under reduced motion the scene is drawn ONCE, so a layout
+     change that never fires a window resize (language switch, FAQ opening)
+     would leave a stretched still frame. Redraw on element resize instead. */
+  var ro=new ResizeObserver(function(){
+    if(rd){ if(rd.resize)rd.resize(); rd(0); }
+    if(es){ if(es.resize)es.resize(); es(0); }
+  });
+  if(hero)ro.observe(hero);
+  if(foot)ro.observe(foot);
+}
 if(reduce){ if(rd)rd(0); if(es)es(0); }
 else{
   var t0=null;
