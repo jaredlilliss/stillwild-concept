@@ -123,18 +123,12 @@ section{scroll-margin-top:86px}
 .lede{font-size:clamp(1.05rem,1rem + .38vw,1.26rem);color:var(--muted);max-width:60ch}
 
 /* the track: sections read as waypoints on a route */
-body{counter-reset:band}
-.band{counter-increment:band;position:relative;border-top:2px dashed rgba(24,36,32,.22)}
+body{}
+.band{position:relative;border-top:2px dashed rgba(24,36,32,.22)}
 .band .eyebrow::before{display:none}
 .band .eyebrow::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 8px,transparent 8px 16px);min-width:40px;opacity:.5}
 .band .band-head{position:relative}
-.band .band-head::before{
-  content:"0" counter(band);
-  position:absolute;top:-.52em;right:-.06em;z-index:0;
-  font:800 clamp(7rem,15vw,14rem)/1 var(--mono);letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1.5px rgba(24,36,32,.13);
-  pointer-events:none;user-select:none;
-}
+
 @supports not (-webkit-text-stroke:1px black){.band .band-head::before{color:rgba(24,36,32,.07)}}
 
 /* prototype markers */
@@ -273,19 +267,14 @@ html[lang^="zh"] .hero h1,html[lang="ja"] .hero h1,html[lang="ko"] .hero h1{line
 .pillar p{color:var(--muted);font-size:.94rem}
 
 /* trips: staggered waypoints */
-.trips{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));align-items:start;counter-reset:trip}
+.trips{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));align-items:start}
 .trip{
   background:var(--surface);border:1.5px solid var(--text);border-radius:var(--radius-lg);
   padding:1.7rem 1.55rem;display:flex;flex-direction:column;gap:1rem;height:100%;
-  position:relative;counter-increment:trip;
+  position:relative;
   transition:transform .3s ease,box-shadow .3s ease;
 }
-.trip::before{
-  content:"WP·0" counter(trip);
-  position:absolute;top:-.7rem;left:1.1rem;
-  font:700 .62rem/1 var(--mono);letter-spacing:.14em;color:var(--bg);
-  background:var(--text);padding:.34em .6em;border-radius:99px;
-}
+
 .trip.feature::before{background:var(--ember)}
 @media (hover:hover){.trip:hover{transform:translateY(-6px);box-shadow:0 24px 44px -24px rgba(24,36,32,.45)}}
 @media (min-width:960px){
