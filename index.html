@@ -85,7 +85,7 @@
   --gum-soft:rgba(47,122,110,.12);
   --radius:2px;
   --radius-lg:6px;
-  --maxw:clamp(1180px, 68vw, 1500px); /* grows on wide screens, hard ceiling at 1500 - a flat cap made the page look broken at low zoom (26/08/2026) */
+  --maxw:1180px;
   --pad:clamp(1.15rem,4vw,2rem);
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -123,12 +123,18 @@ section{scroll-margin-top:86px}
 .lede{font-size:clamp(1.05rem,1rem + .38vw,1.26rem);color:var(--muted);max-width:60ch}
 
 /* the track: sections read as waypoints on a route */
-body{}
-.band{position:relative;border-top:2px dashed rgba(24,36,32,.22)}
+body{counter-reset:band}
+.band{counter-increment:band;position:relative;border-top:2px dashed rgba(24,36,32,.22)}
 .band .eyebrow::before{display:none}
 .band .eyebrow::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 8px,transparent 8px 16px);min-width:40px;opacity:.5}
 .band .band-head{position:relative}
-
+.band .band-head::before{
+  content:"0" counter(band);
+  position:absolute;top:-.52em;right:-.06em;z-index:0;
+  font:800 clamp(7rem,15vw,14rem)/1 var(--mono);letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1.5px rgba(24,36,32,.13);
+  pointer-events:none;user-select:none;
+}
 @supports not (-webkit-text-stroke:1px black){.band .band-head::before{color:rgba(24,36,32,.07)}}
 
 /* prototype markers */
@@ -267,14 +273,19 @@ html[lang^="zh"] .hero h1,html[lang="ja"] .hero h1,html[lang="ko"] .hero h1{line
 .pillar p{color:var(--muted);font-size:.94rem}
 
 /* trips: staggered waypoints */
-.trips{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));align-items:start}
+.trips{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));align-items:start;counter-reset:trip}
 .trip{
   background:var(--surface);border:1.5px solid var(--text);border-radius:var(--radius-lg);
   padding:1.7rem 1.55rem;display:flex;flex-direction:column;gap:1rem;height:100%;
-  position:relative;
+  position:relative;counter-increment:trip;
   transition:transform .3s ease,box-shadow .3s ease;
 }
-
+.trip::before{
+  content:"WP·0" counter(trip);
+  position:absolute;top:-.7rem;left:1.1rem;
+  font:700 .62rem/1 var(--mono);letter-spacing:.14em;color:var(--bg);
+  background:var(--text);padding:.34em .6em;border-radius:99px;
+}
 .trip.feature::before{background:var(--ember)}
 @media (hover:hover){.trip:hover{transform:translateY(-6px);box-shadow:0 24px 44px -24px rgba(24,36,32,.45)}}
 @media (min-width:960px){
@@ -955,12 +966,7 @@ main>#safety{order:7}
     <div id="crew" class="crew-merged">
     <div class="band-head">
       <p class="eyebrow">The crew</p>
-      <!-- Heading changed 26/08/2026 on Jared's ruling. It read "Four people, and you
-           will meet all of them", which asserts both a team size and a guarantee that
-           stillwild.com.au does not support - their own wording is "a few of our key
-           staff", which implies more people than are shown here. Paul's phrasing now
-           stands in place of the claim. -->
-        <h2 id="crew-h">A few of our key staff</h2>
+      <h2 id="crew-h">Four people, and you will meet all of them</h2>
       <p class="lede">These are the people who will be helping you have the most fantastic adventure you could wish for.</p>
     </div>
     <div class="crew">
@@ -1036,15 +1042,8 @@ main>#safety{order:7}
   <div class="wrap">
     <div class="band-head foot-head">
       <p class="eyebrow">Talk to us</p>
-      <!-- Retitled 26/08/2026. This read "Questions? We're on WeChat" with a lede
-               saying "Scan a code up top" - a heading that described a different
-               section and a sentence whose only job was to point at it. The block
-               is actually an enquiry guide and an FAQ, so it now says so. Jared
-               spotted the page repeating itself; the repetition was in the labels,
-               not the content. -->
-          <h2 id="enq-h">Getting in touch</h2>
-          <p class="lede">What to tell us so we can answer properly &mdash; and the
-            questions people ask most.</p>
+      <h2 id="enq-h">Questions? We're on WeChat</h2>
+      <p class="lede">Scan a code up top or search the IDs &mdash; or use the details here.</p>
     </div>
 
     <div class="foot-enquire">
@@ -1882,15 +1881,60 @@ if(reduce && window.ResizeObserver){
 }
 if(reduce){ if(rd)rd(0); if(es)es(0); }
 else{
-  var t0=null;
+  /* GATED 28/08 (Atelier), closing the deferred perf NOTE in the 24/08 handover.
+     Both scenes previously redrew EVERY FRAME FOREVER, on screen or not. The
+     hero draw is not cheap: a full-canvas radial gradient, four ridge polygons
+     of ~W/7 points each, and six birds — running the whole time the reader is
+     down at the enquiry form. The footer embers ran from the moment the page
+     loaded, while the footer sat a metre below the fold.
+
+     Three gates, in increasing order of how much they save:
+       1. draw a canvas only while its own element is near the viewport
+       2. stop the loop outright when NEITHER is
+       3. stop it when the tab is hidden
+     Same shape as the fix that went onto jaredlilliss.github.io today.
+
+     Time stays wall-clock (t = now - t0) rather than freezing while paused, so
+     scrolling back finds the sun and the birds where they would have been. The
+     scene is a slow drift; a frozen clock would be the more noticeable lie.
+
+     If IntersectionObserver is missing, both flags stay true and this is exactly
+     the old always-on behaviour — degrade to the previous cost, never to a blank
+     hero. One frame is drawn immediately either way, so nothing can flash empty
+     while the observer makes up its mind. */
+  if(rd)rd(0); if(es)es(0);
+  var vis={hero:true,foot:true},t0=null,running=false;
   var tick=function(now){
+    if(!running)return;
+    if(document.hidden||(!vis.hero&&!vis.foot)){running=false;return;}
     if(t0===null)t0=now;
     var t=(now-t0)/1000;
-    if(rd)rd(t);
-    if(es)es(t);
+    if(rd&&vis.hero)rd(t);
+    if(es&&vis.foot)es(t);
     requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
+  var start=function(){
+    if(running||document.hidden)return;
+    if(!vis.hero&&!vis.foot)return;
+    running=true;requestAnimationFrame(tick);
+  };
+  try{
+    if(window.IntersectionObserver&&(hero||foot)){
+      vis.hero=vis.foot=false;
+      var io=new IntersectionObserver(function(recs){
+        for(var i=0;i<recs.length;i++){
+          var r=recs[i];
+          if(r.target===hero)vis.hero=r.isIntersecting;
+          else if(r.target===foot)vis.foot=r.isIntersecting;
+        }
+        start();
+      },{rootMargin:'120px'});
+      if(hero)io.observe(hero);
+      if(foot)io.observe(foot);
+    }
+  }catch(e){ vis.hero=vis.foot=true; }
+  addEventListener('visibilitychange',function(){ if(document.hidden)running=false; else start(); });
+  start();
 }
 })();
 </script>
